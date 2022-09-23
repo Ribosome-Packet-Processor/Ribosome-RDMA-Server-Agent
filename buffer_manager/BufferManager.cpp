@@ -28,8 +28,6 @@ ibv_mr *BufferManager::create(Connection *connection, uint64_t length, uint16_t 
 
     this->logger->info("Registering buffer with name `{0}` and length {1}...", name, length);
 
-//    void *region = nullptr;
-//    posix_memalign(&region, sysconf(_SC_PAGESIZE), length);
     void *region = numa_alloc_onnode(length, numaNode);
     ibv_mr *memoryRegion = ibv_reg_mr(connection->protectionDomain, region, length, access);
 

@@ -40,7 +40,7 @@ int Server::init() {
     );
 
     if (portInfo->second->state != IBV_PORT_ACTIVE) {
-        /* We only match IPv4 addresses for GID entry */
+        /* Port is not active, return */
         this->logger->error("Device {0} is not active, aborting.", this->device);
         return 1;
     }
@@ -78,7 +78,7 @@ int Server::init() {
     };
     this->qpAttrs->ah_attr.is_global = 1;
 
-    /* Create additional QPs */
+    /* Create QPs */
     std::random_device rd;
     std::mt19937_64 mt(rd());
     std::uniform_int_distribution<uint16_t> distribution(this->minDistrValue, this->maxDistrValue);
