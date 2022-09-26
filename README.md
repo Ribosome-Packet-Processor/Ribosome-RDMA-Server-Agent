@@ -9,6 +9,9 @@ Before compiling the agent you need to install the following libraries:
 - [libcrafter](https://github.com/pellegre/libcrafter)
 - [Boost System](https://www.boost.org/doc/libs/1_68_0/libs/system/doc/index.html)
 
+Before running the server agent, you need to disable the iCRC check on the specific ConnectX-5 port.
+In this repository, such commands are not shown as they are under NDA.
+
 ## How To Compile
 In order to compile the agent, run the following commands:
 ```bash
